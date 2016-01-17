@@ -24,6 +24,7 @@ int main(int argc, char** argv) {
 
     hash Hashy;
 
+
     Hashy.AddItem("Paul", "Locha");
 	Hashy.AddItem("Kim", "Iced Mocha");
 	Hashy.AddItem("Emma", "Strawberry Smoothie");
@@ -38,6 +39,7 @@ int main(int argc, char** argv) {
 	Hashy.AddItem("Joe", "Green Tea");
 
     Hashy.PrintTable();
+    Hashy.PrintItemInIndex(8);
 
     return 0;
 }

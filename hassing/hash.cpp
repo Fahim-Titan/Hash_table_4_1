@@ -80,6 +80,28 @@ void hash::PrintTable()
 
 }
 
+void hash::PrintItemInIndex(int index)
+{
+    item* Ptr = HashTable[index];
+
+    if (Ptr->name == "empty")
+    {
+        cout << "index = " << index << " is empty";
+    }
+    else
+    {
+        cout << "index " << index <<" contains the following item\n";
+
+        while (Ptr != NULL)
+        {
+            cout << "-----------------\n";
+            cout << Ptr->name <<endl;
+            cout << Ptr->drink <<endl;
+            cout << "-----------------\n";
+            Ptr = Ptr->next;
+        }
+    }
+}
 
 
 int hash::Hash(string key)

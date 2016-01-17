@@ -39,6 +39,7 @@ public:
     void AddItem(string name, string drink);
     int NumberOfItemsInIndex(int index);
     void PrintTable();
+    void PrintItemInIndex(int index);
 };
 
 
