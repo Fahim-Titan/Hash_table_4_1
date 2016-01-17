@@ -23,7 +23,7 @@ using namespace std;
 int main(int argc, char** argv) {
 
     hash Hashy;
-
+    string name = "";
 
     Hashy.AddItem("Paul", "Locha");
 	Hashy.AddItem("Kim", "Iced Mocha");
@@ -41,6 +41,15 @@ int main(int argc, char** argv) {
     Hashy.PrintTable();
     Hashy.PrintItemInIndex(8);
 
+    while (name != "quit")
+    {
+        cout << "\nsearch for ";
+        cin >> name ;
+        if (name != "quit")
+        {
+            Hashy.FindDrink(name);
+        }
+    }
     return 0;
 }
 

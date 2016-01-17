@@ -111,11 +111,38 @@ int hash::Hash(string key)
 
     for(int i=0; i<key.length(); i++)
     {
-        hash = hash + (int)key[i];
+        hash = (hash + (int)key[i])*17;
     }
     index = hash % tableSize;
 
     //cout << "Hash is : " << hash <<endl;
 
     return index;
+}
+
+void hash::FindDrink(string name)
+{
+    int index = Hash(name);
+    bool found = false;
+    string drink;
+
+    item* Ptr = HashTable[index];
+    while (Ptr != NULL)
+    {
+        if (Ptr->name == name)
+        {
+            found = true;
+            drink = Ptr->drink;
+        }
+        Ptr = Ptr->next;
+    }
+
+    if(found)
+    {
+        cout << "Drink name = " << drink << endl;
+    }
+    else
+    {
+        cout << "we didn't found the name" << name << " in the Hash Table\n";
+    }
 }
