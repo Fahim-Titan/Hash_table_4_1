@@ -120,6 +120,75 @@ int hash::Hash(string key)
     return index;
 }
 
+void hash::RemoveItem(string name)
+{
+    int index = Hash(name);
+
+    item* delPtr;
+    item* P1;
+    item* P2;
+
+    //if we don't find the item we are looking
+    if (HashTable[index]->name == "empty" && HashTable[index]->drink == "empty")
+    {
+        cout << name << " is not found in the hash table\n";
+    }
+
+    //if the item we are looking, is FOUND and there is no other items
+    else if (HashTable[index]->name == name && HashTable[index]->next == NULL)
+    {
+        HashTable[index]->name = "empty";
+        HashTable[index]->drink == "empty";
+        cout << name << " is removed from the table\n";
+    }
+
+    //we have found the item at the first. but there are other items in the table
+    else if (HashTable[index]->name == name)
+    {
+        delPtr = HashTable[index];
+        HashTable[index] = HashTable[index]->next;
+        delete delPtr;
+
+        cout << name << " is removed from hash table\n";
+    }
+
+    //we have found the item, but it is not in the first
+    else
+    {
+        P1 = HashTable[index]->next;
+        P2 = HashTable[index];
+
+        while (P1 != NULL && P1->name != name)
+        {
+            P2 = P1;
+            P1 = P1->next;
+        }
+        if (P1 == NULL)
+        {
+            cout << name << " is not found in the table\n";
+        }
+        else
+        {
+            delPtr = P1;
+            P1 = P1->next;
+            P2->next = P1;
+            delete delPtr;
+
+            cout << name << " is removed from the hash table\n";
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 void hash::FindDrink(string name)
 {
     int index = Hash(name);

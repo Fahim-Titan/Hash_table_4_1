@@ -39,9 +39,9 @@ int main(int argc, char** argv) {
 	Hashy.AddItem("Joe", "Green Tea");
 
     Hashy.PrintTable();
-    Hashy.PrintItemInIndex(8);
+    //Hashy.PrintItemInIndex(8);
 
-    while (name != "quit")
+  /*  while (name != "quit")
     {
         cout << "\nsearch for ";
         cin >> name ;
@@ -49,7 +49,20 @@ int main(int argc, char** argv) {
         {
             Hashy.FindDrink(name);
         }
+    }*/
+
+    while (name != "quit")
+    {
+        cout << "Remove : ";
+        cin >> name;
+
+        if (name != "quit")
+        {
+            Hashy.RemoveItem(name);
+        }
     }
+    Hashy.PrintTable();
+
     return 0;
 }
 

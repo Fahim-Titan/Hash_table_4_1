@@ -23,7 +23,7 @@ using namespace std;
 
 class hash{
 private:
-    static const int tableSize = 40;
+    static const int tableSize = 4;
 
     struct item{
         string name;
@@ -41,6 +41,7 @@ public:
     void PrintTable();
     void PrintItemInIndex(int index);
     void FindDrink(string name);
+    void RemoveItem(string name);
 };
 
 
