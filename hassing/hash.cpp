@@ -13,26 +13,26 @@ hash::hash()
     {
         HashTable[i] = new item;
         HashTable[i]->name = "empty";
-        HashTable[i]->drink = "empty";
+        HashTable[i]->Data_Type = "empty";
         HashTable[i]->next = NULL;
     }
 }
 
-void hash::AddItem(string name, string drink)
+void hash::AddItem(string name, string Data_Type)
 {
     int index = Hash(name);
 
     if(HashTable[index]->name == "empty")
     {
         HashTable[index]->name = name;
-        HashTable[index]->drink = drink;
+        HashTable[index]->Data_Type = Data_Type;
     }
     else
     {
         item* Ptr = HashTable[index];
         item* n = new item;
         n->name = name;
-        n->drink = drink;
+        n->Data_Type = Data_Type;
         n->next = NULL;
 
         while(Ptr->next != NULL)
@@ -41,6 +41,7 @@ void hash::AddItem(string name, string drink)
         }
         Ptr->next = n;
     }
+    cout << "item inserted successfully";
 }
 
 int hash::NumberOfItemsInIndex(int index)
@@ -73,7 +74,7 @@ void hash::PrintTable()
         cout << "-------------------\n";
         cout << "index = " << i << endl;
         cout << HashTable[i]->name << endl;
-        cout << HashTable[i]->drink << endl;
+        cout << HashTable[i]->Data_Type << endl;
         cout << "# of Items = " << number << endl;
         cout << "-------------------\n";
     }
@@ -96,7 +97,7 @@ void hash::PrintItemInIndex(int index)
         {
             cout << "-----------------\n";
             cout << Ptr->name <<endl;
-            cout << Ptr->drink <<endl;
+            cout << Ptr->Data_Type <<endl;
             cout << "-----------------\n";
             Ptr = Ptr->next;
         }
@@ -111,7 +112,7 @@ int hash::Hash(string key)
 
     for(int i=0; i<key.length(); i++)
     {
-        hash = (hash + (int)key[i])*17;
+        hash = (hash + (int)key[i])*11*3/7-457;
     }
     index = hash % tableSize;
 
@@ -129,7 +130,7 @@ void hash::RemoveItem(string name)
     item* P2;
 
     //if we don't find the item we are looking
-    if (HashTable[index]->name == "empty" && HashTable[index]->drink == "empty")
+    if (HashTable[index]->name == "empty" && HashTable[index]->Data_Type == "empty")
     {
         cout << name << " is not found in the hash table\n";
     }
@@ -138,7 +139,7 @@ void hash::RemoveItem(string name)
     else if (HashTable[index]->name == name && HashTable[index]->next == NULL)
     {
         HashTable[index]->name = "empty";
-        HashTable[index]->drink == "empty";
+        HashTable[index]->Data_Type = "empty";
         cout << name << " is removed from the table\n";
     }
 
@@ -189,11 +190,11 @@ void hash::RemoveItem(string name)
 
 
 
-void hash::FindDrink(string name)
+void hash::FindData_Type(string name)
 {
     int index = Hash(name);
     bool found = false;
-    string drink;
+    string Data_Type;
 
     item* Ptr = HashTable[index];
     while (Ptr != NULL)
@@ -201,14 +202,14 @@ void hash::FindDrink(string name)
         if (Ptr->name == name)
         {
             found = true;
-            drink = Ptr->drink;
+            Data_Type = Ptr->Data_Type;
         }
         Ptr = Ptr->next;
     }
 
     if(found)
     {
-        cout << "Drink name = " << drink << endl;
+        cout << "Data_Type name = " << Data_Type << endl;
     }
     else
     {

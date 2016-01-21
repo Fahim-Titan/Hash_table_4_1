@@ -27,7 +27,7 @@ private:
 
     struct item{
         string name;
-        string drink;
+        string Data_Type;
         item* next;
     };
 
@@ -36,11 +36,11 @@ private:
 public:
     hash();
     int Hash(string key);
-    void AddItem(string name, string drink);
+    void AddItem(string name, string Data_Type);
     int NumberOfItemsInIndex(int index);
     void PrintTable();
     void PrintItemInIndex(int index);
-    void FindDrink(string name);
+    void FindData_Type(string name);
     void RemoveItem(string name);
 };
 
